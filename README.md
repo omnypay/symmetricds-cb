@@ -1,8 +1,11 @@
 # symmetricds Cookbook
 
-TODO: Enter the cookbook description here.
+Installs standalone [Symmetric-DS](http://www.symmetricds.com/products/symmetricds/overview) 
+
 
 ## Requirements
+
+* Java SE Runtime Environment 7 or above
 
 ## Usage
 
