@@ -2,6 +2,7 @@
 
 Installs standalone [Symmetric-DS](http://www.symmetricds.com/products/symmetricds/overview) 
 
+> NOTE: Does not work yet
 
 ## Requirements
 
