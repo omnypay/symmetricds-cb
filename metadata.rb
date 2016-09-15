@@ -9,11 +9,11 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Issues` link
-# issues_url 'https://github.com/<insert_org_here>/symmetricds/issues' if respond_to?(:issues_url)
+issues_url 'https://github.com/omnypay/symmetricds/issues' if respond_to?(:issues_url)
 
 # If you upload to Supermarket you should set this so your cookbook
 # gets a `View Source` link
-# source_url 'https://github.com/<insert_org_here>/symmetricds' if respond_to?(:source_url)
+source_url 'https://github.com/omnypay/symmetricds' if respond_to?(:source_url)
 
 %w(apt java).each do |dependency|
     depends dependency
