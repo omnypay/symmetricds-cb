@@ -4,6 +4,10 @@
 #
 # Copyright (c) 2016 OmnyPay Inc., All Rights Reserved.
 
+default['java']['install_flavor'] = 'oracle'
+default['java']['jdk_version'] = '8'
+default['java']['oracle']['accept_oracle_download_terms'] = true
+
 default['symmetricds']['base_dir'] = "/opt/symmetric-ds"
 default['symmetricds']['distro']['base_url'] = "https://support.jumpmind.com/downloads/symmetricds/releases/"
 default['symmetricds']['distro']['major'] = "3"

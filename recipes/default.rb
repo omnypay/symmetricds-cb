@@ -4,14 +4,33 @@
 #
 # Copyright (c) 2016 OmnyPay Inc., All Rights Reserved.
 
+include_recipe 'apt'
+include_recipe 'java'
+
 ds = node['symmetricds']
 distro = ds['distro']
 ds_dir = ds['base_dir']
+
+directory ds_dir do
+  recursive true
+  owner 'root'
+  group 'root'
+end
 
 # Get from * https://support.jumpmind.com/downloads/symmetricds/releases/3.8/symmetric-pro-3.8.2-setup.jar
 major = distro['major']
 minor = distro['minor']
 patch = distro['patch']
+version_path = File.join(ds_dir, "VERSION")
+
+# Create a file in the ds_dir with the VERSION deployed
+file version_path do
+  content "#{major}.#{minor}.#{patch}\n"
+  mode "0444"
+  owner 'root'
+  group 'root'
+end
+
 setup_jar = "symmetric-pro-#{major}.#{minor}.#{patch}-setup.jar"
 ds_url = "#{distro['base_url']}/#{major}.#{minor}/#{setup_jar}"
 setup_jar_path = File.join(Chef::Config[:file_cache_path], setup_jar)
@@ -20,19 +39,14 @@ remote_file setup_jar_path do
   owner 'root'
   group 'root'
   mode '0644'
-  action :create_if_missing
-end
-
-directory ds_dir do
-  recursive true
-  owner 'root'
-  group 'root'
+  show_progress true
 end
 
 config = ds['config']
 service_already_installed = File.exists?(File.join(config['init']['dir'], config['init']['service_name']))
 install_service = service_already_installed ? false : config['install_service']
 
+Chef::Log.info("++++++++++++ config: #{config.inspect}")
 template File.join(ds_dir, "auto-install.xml") do
   owner 'root'
   group 'root'
@@ -41,7 +55,7 @@ template File.join(ds_dir, "auto-install.xml") do
   variables({
               ds_dir: ds_dir,
               run_server_after_install: config['run_server_after_install'],
-              install_service: install_service
+              install_service: install_service,
               jmx_enabled: config['jmx']['enabled'],
               jmx_port: config['jmx']['port'],
               jmx_agent_enabled: config['jmx']['agent_enabled'],
@@ -57,7 +71,7 @@ end
 
 bash "install_symmetricds" do
   cwd ds_dir
-  code "java -jar #{setup_jar} -console auto-install.xml"
+  code "java -jar #{setup_jar_path} -console auto-install.xml"
   not_if {File.exists?(File.join(ds_dir, "Uninstaller"))}
 end
 

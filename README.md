@@ -2,7 +2,9 @@
 
 Installs standalone [Symmetric-DS](http://www.symmetricds.com/products/symmetricds/overview) 
 
-> NOTE: Does not work yet
+* Does not configure anything other than some of the setup/install parameters. 
+* It does configure it enough to get it running.
+* Still need to configure the application manually
 
 ## Requirements
 
@@ -10,16 +12,17 @@ Installs standalone [Symmetric-DS](http://www.symmetricds.com/products/symmetric
 
 ## Usage
 
+Include `symmetricds::default` in a run_list or equivalant
+
 ## Attributes
 
-#### symmetricds::default
+See `attributes/default.rb`
 
-| Key | Type | Description | Default |
-|-----|------|-------------|---------|
-|  |  |  |  |
 
 Test Kitchen
 ------------
+
+Running test kitchen will just test convergence.
 
 ## License and Authors
 

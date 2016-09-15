@@ -15,6 +15,6 @@ long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 # gets a `View Source` link
 # source_url 'https://github.com/<insert_org_here>/symmetricds' if respond_to?(:source_url)
 
-%w().each do |dependency|
+%w(apt java).each do |dependency|
     depends dependency
 end
