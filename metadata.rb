@@ -1,7 +1,7 @@
 name 'symmetricds'
 maintainer 'OmnyPay Ops'
 maintainer_email 'ops@omnypay.net'
-license 'all_rights'
+license 'Apache 2.0'
 description 'Installs/Configures symmetricds'
 long_description 'Installs/Configures symmetricds'
 version          IO.read(File.join(File.dirname(__FILE__), 'VERSION')).chomp rescue '0.0.1'
