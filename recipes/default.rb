@@ -80,10 +80,13 @@ central master db.url:
 jdbc:postgresql://ariadne-db-000-a.priv.prod0.omnypay.net/ariadne-prod0?protocolVersion=3&stringtype=unspecified&socketTimeout=300&tcpKeepAlive=true
 
 clien db.url:
-jdbc:postgresql://ariadne-db-000-b.priv.prod1.omnypay.net/ariadne-prod1?protocolVersion=3&stringtype=unspecified&socketTimeout=300&tcpKeepAlive=true
+jdbc:postgresql://ariadne-db-000-c.priv.prod1.omnypay.net/ariadne-prod1?protocolVersion=3&stringtype=unspecified&socketTimeout=300&tcpKeepAlive=true
 
  Autoregistration link
  https://symmetricds-000.prod0.omnypay.net:31417/sync/master-1
+
+https://db-replicator-000-c.prod0.omnypay.net:31417/sync/master-1
+
  Before Write Script
 engine.getSqlTemplate.update("SET foreign_key_checks = 0");
 
