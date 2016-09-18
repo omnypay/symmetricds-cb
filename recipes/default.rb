@@ -56,6 +56,7 @@ template File.join(ds_dir, "auto-install.xml") do
               ds_dir: ds_dir,
               run_server_after_install: config['run_server_after_install'],
               install_service: install_service,
+              service_name: config['init']['service_name'],
               jmx_enabled: config['jmx']['enabled'],
               jmx_port: config['jmx']['port'],
               jmx_agent_enabled: config['jmx']['agent_enabled'],
